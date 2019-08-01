@@ -6,6 +6,7 @@
 
     const container = document.querySelector('.container');
     const coords = container.getBoundingClientRect();
+
     const shapes = ['square','rect','triangle','circle'];
     const directions = ['up','down','left','right'];
     const sizes = ['small','medium','large'];
@@ -167,7 +168,12 @@
             el();
         }
 
-        container.addEventListener('click', ()=>{
+        container.addEventListener('click', (e)=>{
+            const el = e.target;
+            const con = e.currentTarget;
+            if (el !== con ) {
+                move(el);
+            }
             isAnimated=!isAnimated;
             if (isAnimated) {
                 startMove();
